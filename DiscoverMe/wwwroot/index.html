@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscoverMe</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome to DiscoverMe!</h1>
+<div id="map"></div>
+
+<script>
+    async function loadGoogleMaps() {
+        try {
+            // Fetch the API key from the backend
+            const response = await fetch('/api/google-maps-key');
+            if (!response.ok) {
+                throw new Error("Failed to fetch API key");
+            }
+
+            const data = await response.json();
+            const apiKey = data.apiKey;
+
+            if (!apiKey) {
+                console.error("Google Maps API key not found!");
+                return;
+            }
+
+            // Dynamically load the Google Maps script with the API key
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+            script.async = true;  // Ensures the script loads asynchronously
+            script.defer = true;  // Ensures the script runs after the document is parsed
+            document.head.appendChild(script);
+        } catch (error) {
+            console.error("Error loading Google Maps:", error);
+        }
+    }
+
+    function initMap() {
+        // Define a default map location (San Francisco)
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 37.7749, lng: -122.4194 },
+            zoom: 12,
+        });
+
+        // Geolocation to place a marker on the user's current location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+
+                    // Create the marker using AdvancedMarkerElement (new method)
+                    new google.maps.marker.AdvancedMarkerElement({
+                        position: userLocation,
+                        map: map,
+                        title: "You are here!",
+                    });
+
+                    // Center the map at the user's location
+                    map.setCenter(userLocation);
+                },
+                (error) => {
+                    console.warn("Geolocation error:", error.message);
+                    alert("⚠ Location access denied. Enable it for better experience.");
+                }
+            );
+        } else {
+            alert("❌ Geolocation not supported by your browser.");
+        }
+    }
+
+    // Load Google Maps API once the page is loaded
+    window.onload = loadGoogleMaps;
+</script>
+
+</body>
+</html>
+
+
