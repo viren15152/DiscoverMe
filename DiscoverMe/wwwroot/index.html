@@ -13,39 +13,49 @@
 </head>
 <body>
 
-<h1>Welcome to DiscoverMe!</h1>
+<h1>DiscoverMe!</h1>
 <div id="map"></div>
 
 <script>
     async function loadGoogleMaps() {
         try {
-            // Fetch the API key from the backend
+            console.log("🚀 Fetching Google Maps API key...");
             const response = await fetch('/api/google-maps-key');
+
             if (!response.ok) {
-                throw new Error("Failed to fetch API key");
+                throw new Error("❌ Failed to fetch API key from backend.");
             }
 
             const data = await response.json();
             const apiKey = data.apiKey;
 
             if (!apiKey) {
-                console.error("Google Maps API key not found!");
+                console.error("❌ Google Maps API key is missing!");
                 return;
             }
 
-            // Dynamically load the Google Maps script with the API key
+            console.log("✅ API Key Retrieved:", apiKey);
+
+            // Dynamically load Google Maps script with API key
             const script = document.createElement('script');
             script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-            script.async = true;  // Ensures the script loads asynchronously
-            script.defer = true;  // Ensures the script runs after the document is parsed
+            script.async = true;
+            script.defer = true;
+            script.onerror = () => console.error("❌ Failed to load Google Maps script!");
             document.head.appendChild(script);
         } catch (error) {
-            console.error("Error loading Google Maps:", error);
+            console.error("⚠ Error loading Google Maps:", error);
+            alert("⚠ Failed to load Google Maps. Check console for details.");
         }
     }
 
-    function initMap() {
-        // Define a default map location (San Francisco)
+    async function initMap() {
+        console.log("🗺 Initializing Google Maps...");
+
+        // Load Google Maps API libraries asynchronously
+        await google.maps.importLibrary("maps");
+
+        // Create map centered on San Francisco
         const map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 37.7749, lng: -122.4194 },
             zoom: 12,
@@ -60,8 +70,8 @@
                         lng: position.coords.longitude,
                     };
 
-                    // Create the marker using AdvancedMarkerElement (new method)
-                    new google.maps.marker.AdvancedMarkerElement({
+                    // ✅ Use a standard Google Maps marker (instead of AdvancedMarkerElement)
+                    new google.maps.Marker({
                         position: userLocation,
                         map: map,
                         title: "You are here!",
@@ -71,12 +81,12 @@
                     map.setCenter(userLocation);
                 },
                 (error) => {
-                    console.warn("Geolocation error:", error.message);
-                    alert("⚠ Location access denied. Enable it for better experience.");
+                    console.warn("⚠ Geolocation error:", error.message);
+                    alert("⚠ Location access denied. Enable it for a better experience.");
                 }
             );
         } else {
-            alert("❌ Geolocation not supported by your browser.");
+            alert("❌ Geolocation is not supported by your browser.");
         }
     }
 
@@ -86,5 +96,7 @@
 
 </body>
 </html>
+
+
 
 

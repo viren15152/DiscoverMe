@@ -1,21 +1,33 @@
-using DotNetEnv;  // Add this to access the .env file
+using DotNetEnv;  // ✅ Ensure DotNetEnv package is installed
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 Console.WriteLine("🚀 Application is starting...");
 
-// Load environment variables from .env file
-Env.Load();
+// ✅ Load environment variables from .env file (with error handling)
+try
+{
+    Env.Load();
+    Console.WriteLine("✅ .env file loaded successfully.");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"❌ Error loading .env file: {ex.Message}");
+}
 
 var app = builder.Build();
 
-// Use static files and routing
+// ✅ Serve static files (needed for index.html & JS)
 app.UseStaticFiles();
 app.UseRouting();
 
-// ✅ Fix: Add missing API route to fetch API key
+// ✅ API route to fetch the Google Maps API key
 app.MapGet("/api/google-maps-key", () =>
 {
-    // Retrieve the API key from the environment variable
+    // Retrieve the API key from environment variables
     var apiKey = Environment.GetEnvironmentVariable("GOOGLE_MAPS_API_KEY");
 
     if (string.IsNullOrEmpty(apiKey))
@@ -24,19 +36,17 @@ app.MapGet("/api/google-maps-key", () =>
         return Results.Json(new { error = "API key not set" }, statusCode: 500);
     }
 
+    Console.WriteLine("🔑 Google Maps API Key successfully retrieved.");
     return Results.Json(new { apiKey });
 });
 
-// ✅ Ensure index.html is served correctly
-app.MapGet("/", (HttpContext context) =>
-{
-    Console.WriteLine("🔄 Redirecting to index.html...");
-    context.Response.Redirect("/index.html");
-    return Task.CompletedTask;
-});
+// ✅ Ensure `index.html` serves correctly
+app.MapFallbackToFile("index.html");
 
-Console.WriteLine("✅ Middleware configured. Application should be running...");
+// ✅ Run the application
+Console.WriteLine("✅ Application middleware configured. Running...");
 app.Run();
+
 
 
 
