@@ -11,25 +11,34 @@ body {
 h1 {
   color: whitesmoke;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-align: center;  /* Center title */
+  text-align: center;
 }
 
 h3 {
   color: grey;
   font-family: 'Courier New', Courier, monospace;
-  text-align: center;  /* Center sub-heading */
+  text-align: center;
 }
 
 p {
   color: whitesmoke;
+  text-align: center;
 }
 
 /* MAP */
 #map {
   height: 500px;
-  width: 100%;
+  width: 600px;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+/* MAP CONTAINER */
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 /* CONTAINER */
@@ -43,8 +52,8 @@ p {
 .header {
   display: flex;
   align-items: center;
-  justify-content: center; /* ✅ Centers text + logo */
-  gap: 10px; /* ✅ Adds space between logo & text */
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -53,11 +62,11 @@ p {
   height: 50px;
 }
 
-/* SEARCH CONTAINER */
-.search-container {
+/* SEARCH & DIRECTIONS CONTAINER */
+.search-container, .directions-container {
   display: flex;
   justify-content: center;
-  gap: 10px; /* ✅ Adds space between input and button */
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -68,9 +77,9 @@ p {
   border-radius: 5px;
 }
 
-/* GREEN SEARCH BUTTON (MATCHES REMOVE BUTTON STYLE) */
+/* BUTTON STYLES */
 .btn-search {
-  background-color: green; /* ✅ Green Button */
+  background-color: green;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -83,19 +92,30 @@ p {
   background-color: darkgreen;
 }
 
-/* REMOVE BUTTON */
-.btn-remove {
-  background: rgb(194, 44, 74);
+.btn-directions {
+  background-color: green;
   color: white;
+  padding: 10px 15px;
   border: none;
-  cursor: pointer;
-  padding: 8px 12px;
   border-radius: 5px;
+  cursor: pointer;
   font-size: 16px;
 }
 
-.btn-remove:hover {
-  background: darkorange;
+.btn-directions:hover {
+  background-color: darkgreen;
+}
+
+/* DIRECTIONS PANEL */
+#directionsPanel {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 600px;
+  margin: auto;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
 }
 
 /* FAVORITES SECTION */
@@ -122,7 +142,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 450px; 
+  width: 450px;
   border: 2px solid #ccc;
 }
 
@@ -131,6 +151,50 @@ p {
   text-align: left;
   padding-left: 10px;
 }
+
+/* REMOVE BUTTON */
+.btn-remove {
+  background: rgb(194, 44, 74);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-remove:hover {
+  background: green;
+}
+
+/* ✅ Flexbox to position map and directions side by side */
+.map-directions-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Adds spacing between map & directions */
+  max-width: 900px; /* Ensures both fit in a reasonable space */
+  margin: auto; /* Centers the container */
+}
+
+/* ✅ Ensure the map and directions panel have the same size */
+#map, #directionsPanel {
+  width: 450px;  /* Adjust to match your current map width */
+  height: 500px; /* Keep height equal */
+  border-radius: 10px;
+  background: white; /* Matches the map's default look */
+  overflow-y: auto; /* Enables scrolling for long route lists */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ Style the directions panel */
+#directionsPanel {
+  border: 2px solid #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
 
 
 

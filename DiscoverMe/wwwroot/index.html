@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiscoverMe</title>
-    <link rel="stylesheet" href="css/site.css">  <!--Using external CSS -->
+    <link rel="stylesheet" href="css/site.css">  <!-- Using external CSS -->
 </head>
 <body>
 
@@ -18,11 +18,24 @@
 <!-- Search Box -->
 <div class="search-container">
     <input type="text" id="searchBox" class="form-control search-input" placeholder="Search for a place...">
-    <button class="btn btn-search" onclick="searchLocation()">Search</button> <!-- ✅ Green Button -->
+    <button class="btn btn-search" onclick="searchLocation()">Search</button>
 </div>
 
-<!-- Map -->
-<div id="map"></div>
+
+<!-- Directions Input -->
+<div class="directions-container">
+    <input type="text" id="startLocation" class="form-control search-input" placeholder="Enter Start Location">
+    <input type="text" id="destination" class="form-control search-input" placeholder="Enter Destination">
+    <button class="btn btn-directions" onclick="getDirections()">Get Directions</button>
+</div>
+
+<!-- Map & Directions Panel -->
+<!-- Map & Directions Container -->
+<div class="map-directions-container">
+    <div id="map"></div>
+    <div id="directionsPanel"></div> <!--Moved next to the map -->
+</div>
+
 
 <!-- Favorites Section -->
 <h3 class="favorites-title">Favorite Places</h3>
@@ -31,6 +44,7 @@
 <script src="js/site.js"></script> <!-- Using external JS -->
 </body>
 </html>
+
 
 
 
