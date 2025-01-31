@@ -4,30 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiscoverMe</title>
-    <link rel="stylesheet" href="css/site.css">  <!-- Using site.css -->
+    <link rel="stylesheet" href="css/site.css">  <!--Using external CSS -->
 </head>
 <body>
 
-<div class="container">
-    <h1 class="text-center my-3">DiscoverMe</h1>
-
-    <!-- Search Box -->
-    <div class="input-group mb-3">
-        <input type="text" id="searchBox" class="form-control" placeholder="Search for a place...">
-        <button class="btn btn-primary" onclick="searchLocation()">Search</button>
-    </div>
-
-    <!-- Map -->
-    <div id="map"></div>
-
-    <!-- Favorites Section -->
-    <h3 class="mt-4">Favorite Places</h3>
-    <ul id="favoriteList" class="favorite-list"></ul>
+<!-- Header Section -->
+<div class="header">
+    <img src="images/globe.png" alt="Logo" class="logo"> <!-- Logo next to text -->
+    <h1 class="title">DiscoverMe</h1>
+    <p>Find and save your favorite places easily</p>
 </div>
 
-<script src="js/site.js"></script> <!-- Now using site.js -->
+<!-- Search Box -->
+<div class="search-container">
+    <input type="text" id="searchBox" class="form-control search-input" placeholder="Search for a place...">
+    <button class="btn btn-search" onclick="searchLocation()">Search</button> <!-- ✅ Green Button -->
+</div>
+
+<!-- Map -->
+<div id="map"></div>
+
+<!-- Favorites Section -->
+<h3 class="favorites-title">Favorite Places</h3>
+<ul id="favoriteList" class="favorite-list"></ul>
+
+<script src="js/site.js"></script> <!-- Using external JS -->
 </body>
 </html>
+
+
 
 
 

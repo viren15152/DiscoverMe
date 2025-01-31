@@ -1,40 +1,136 @@
+/* IMPORT FONT */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* GENERAL STYLING */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   background-color: black;
 }
 
+/* HEADINGS */
 h1 {
-  color:grey;
-  font-family: 'Courier New', Courier, monospace;
+  color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;  /* Center title */
 }
 
+h3 {
+  color: grey;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;  /* Center sub-heading */
+}
+
+p {
+  color: whitesmoke;
+}
+
+/* MAP */
 #map {
   height: 500px;
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
 }
+
+/* CONTAINER */
 .container {
   max-width: 800px;
   margin: auto;
   padding: 20px;
 }
-.favorite-list {
-  list-style: none;
-  padding: 0;
-}
-.favorite-list li {
-  background: #f8f9fa;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
+
+/* HEADER */
+.header {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center; /* ✅ Centers text + logo */
+  gap: 10px; /* ✅ Adds space between logo & text */
+  margin-bottom: 20px;
 }
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* SEARCH CONTAINER */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* ✅ Adds space between input and button */
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+/* GREEN SEARCH BUTTON (MATCHES REMOVE BUTTON STYLE) */
+.btn-search {
+  background-color: green; /* ✅ Green Button */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-search:hover {
+  background-color: darkgreen;
+}
+
+/* REMOVE BUTTON */
 .btn-remove {
-  background: red;
+  background: rgb(194, 44, 74);
   color: white;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 16px;
 }
+
+.btn-remove:hover {
+  background: darkorange;
+}
+
+/* FAVORITES SECTION */
+.favorites-title {
+  text-align: center;
+  margin-top: 20px;
+  color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* FAVORITE LIST */
+.favorite-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.favorite-list li {
+  background: #f8f9fa;
+  padding: 12px;
+  margin: 8px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 450px; 
+  border: 2px solid #ccc;
+}
+
+.favorite-list span {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+
