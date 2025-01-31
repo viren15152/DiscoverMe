@@ -4,98 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiscoverMe</title>
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="css/site.css">  <!-- Using site.css -->
 </head>
 <body>
 
-<h1>DiscoverMe!</h1>
-<div id="map"></div>
+<div class="container">
+    <h1 class="text-center my-3">DiscoverMe</h1>
 
-<script>
-    async function loadGoogleMaps() {
-        try {
-            console.log("🚀 Fetching Google Maps API key...");
-            const response = await fetch('/api/google-maps-key');
+    <!-- Search Box -->
+    <div class="input-group mb-3">
+        <input type="text" id="searchBox" class="form-control" placeholder="Search for a place...">
+        <button class="btn btn-primary" onclick="searchLocation()">Search</button>
+    </div>
 
-            if (!response.ok) {
-                throw new Error("❌ Failed to fetch API key from backend.");
-            }
+    <!-- Map -->
+    <div id="map"></div>
 
-            const data = await response.json();
-            const apiKey = data.apiKey;
+    <!-- Favorites Section -->
+    <h3 class="mt-4">Favorite Places</h3>
+    <ul id="favoriteList" class="favorite-list"></ul>
+</div>
 
-            if (!apiKey) {
-                console.error("❌ Google Maps API key is missing!");
-                return;
-            }
-
-            console.log("✅ API Key Retrieved:", apiKey);
-
-            // Dynamically load Google Maps script with API key
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-            script.async = true;
-            script.defer = true;
-            script.onerror = () => console.error("❌ Failed to load Google Maps script!");
-            document.head.appendChild(script);
-        } catch (error) {
-            console.error("⚠ Error loading Google Maps:", error);
-            alert("⚠ Failed to load Google Maps. Check console for details.");
-        }
-    }
-
-    async function initMap() {
-        console.log("🗺 Initializing Google Maps...");
-
-        // Load Google Maps API libraries asynchronously
-        await google.maps.importLibrary("maps");
-
-        // Create map centered on San Francisco
-        const map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: 37.7749, lng: -122.4194 },
-            zoom: 12,
-        });
-
-        // Geolocation to place a marker on the user's current location
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const userLocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    };
-
-                    // ✅ Use a standard Google Maps marker (instead of AdvancedMarkerElement)
-                    new google.maps.Marker({
-                        position: userLocation,
-                        map: map,
-                        title: "You are here!",
-                    });
-
-                    // Center the map at the user's location
-                    map.setCenter(userLocation);
-                },
-                (error) => {
-                    console.warn("⚠ Geolocation error:", error.message);
-                    alert("⚠ Location access denied. Enable it for a better experience.");
-                }
-            );
-        } else {
-            alert("❌ Geolocation is not supported by your browser.");
-        }
-    }
-
-    // Load Google Maps API once the page is loaded
-    window.onload = loadGoogleMaps;
-</script>
-
+<script src="js/site.js"></script> <!-- Now using site.js -->
 </body>
 </html>
+
 
 
 
