@@ -1,21 +1,21 @@
-/* IMPORT FONTS */
-
 @media screen and (min-width: 768px) {
   body {
     font-size: 18px;
   }
 }
 
-/* GENERAL STYLING */
+/* ✅ GENERAL STYLING */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: black;
   margin: 0;
   padding: 0;
   color: white;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-/* HEADER - Aligns Logo & Title Cleanly */
+/* ✅ HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -23,15 +23,16 @@ body {
   gap: 15px;
   margin-bottom: 30px;
   padding-top: 30px;
+  text-align: center;
 }
 
-/* LOGO - Properly Scaled & Spaced */
+/* LOGO */
 .logo {
   width: 75px;
   height: 75px;
 }
 
-/* TITLE STYLING */
+/* TITLE */
 .header h1 {
   font-size: 40px;
   color: rgb(57, 135, 201);
@@ -40,7 +41,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* SUBTITLE - Clean & Readable */
+/* SUBTITLE */
 .header p {
   font-size: 14px;
   color: rgb(57, 135, 201);
@@ -49,7 +50,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* MAIN CONTENT CONTAINER */
+/* ✅ MAIN CONTENT CONTAINER */
 .main-content {
   display: flex;
   justify-content: center;
@@ -58,16 +59,10 @@ body {
   max-width: 1100px;
   margin: auto;
   padding: 20px;
+  width: 100%;
 }
 
-/* LEFT COLUMN: MAP & DIRECTIONS */
-.map-directions-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* SEARCH & ROUTE INPUTS CONTAINER (NEXT TO MAP) */
+/* ✅ SEARCH & DIRECTIONS SECTION */
 .search-directions-container {
   display: flex;
   flex-direction: column;
@@ -76,10 +71,11 @@ body {
   width: 320px;
 }
 
-/* SEARCH & ROUTE INPUT FIELDS */
+/* ✅ INPUT FIELDS - FIX TEXT ALIGNMENT */
 .search-input,
 .directions-input {
   width: 100%;
+  display: block;
   padding: 12px;
   border: 2px solid #444;
   border-radius: 5px;
@@ -87,27 +83,27 @@ body {
   background: #222;
   color: white;
   transition: border 0.3s ease-in-out;
+  text-align: left; /* 🚀 Ensures text starts from the left */
+  line-height: 1.5; /* 🚀 Ensures proper text vertical alignment */
+  box-sizing: border-box;
 }
 
-/* Input Focus Effect */
-.search-input:focus,
-.directions-input:focus {
-  border-color:  rgb(57, 135, 201);
-  outline: none;
-}
-
-/* BUTTON STYLING - Next to Inputs */
+/* ✅ BUTTONS - MATCH INPUT SIZE */
 .btn-search,
 .btn-directions {
-  background-color: rgb(57, 135, 201);
-  color: white;
-  padding: 12px 18px;
+  width: 100%;
+  display: block;
+  padding: 12px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  background-color: rgb(57, 135, 201);
+  color: white;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .btn-search:hover,
@@ -115,11 +111,23 @@ body {
   background-color: rgb(14, 57, 93);
 }
 
-/* MAP & DIRECTIONS PANEL - SAME SIZE */
+/* ✅ MAP & DIRECTIONS PANEL - FULL WIDTH ON MOBILE */
+.map-directions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 650px;
+}
+
+/* ✅ ENSURE MAP & DIRECTIONS TOUCH THE LEFT SIDE ON MOBILE */
 #map,
 #directionsPanel {
-  width: 500px;
+  width: 100%;
+  max-width: 650px;
   height: 500px;
+  min-height: 400px;
   border-radius: 12px;
   background: white;
   padding: 15px;
@@ -127,24 +135,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;  /* Allow scrolling within the directions box */
-  flex-direction: column;  /* Ensure the content aligns vertically */
+  overflow-y: auto;
+  flex-direction: column;
 }
-
-/* ADD SCROLLBAR STYLE FOR DIRECTIONS PANEL */
-#directionsPanel::-webkit-scrollbar {
-  width: 10px;
-}
-
-#directionsPanel::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 128, 0, 0.7);
-  border-radius: 10px;
-}
-
-#directionsPanel::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
 
 /* ✅ FAVORITES SECTION */
 .favorites-container {
@@ -203,6 +196,47 @@ body {
   background: darkred;
   transform: scale(1.05);
 }
+
+/* ✅ RESPONSIVE FIXES (Switch Search & Favorites + Remove Left Gap) */
+@media screen and (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 0;
+  }
+
+  /* ✅ Move SEARCH to the top */
+  .search-directions-container {
+    order: -1;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* ✅ Move FAVORITES to the bottom */
+  .favorites-container {
+    order: 1;
+    width: 100%;
+  }
+
+  /* ✅ REMOVE LEFT GAP & ENSURE FULL-WIDTH MAP & DIRECTIONS */
+  #map,
+  #directionsPanel {
+    height: 450px;
+    width: 100%;
+    max-width: none;
+    min-height: 400px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+
+
+
 
 
 
