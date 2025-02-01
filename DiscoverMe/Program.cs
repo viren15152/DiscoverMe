@@ -1,13 +1,15 @@
-using DotNetEnv;  // ✅ Ensure DotNetEnv package is installed
+using DotNetEnv;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.FileProviders;
 using System;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 Console.WriteLine("🚀 Application is starting...");
 
-// ✅ Load environment variables from .env file (with error handling)
+// ✅ Load environment variables (ensure .env exists)
 try
 {
     Env.Load();
@@ -20,14 +22,19 @@ catch (Exception ex)
 
 var app = builder.Build();
 
-// ✅ Serve static files (needed for index.html & JS)
-app.UseStaticFiles();
+// ✅ Enable Routing Middleware (MUST be before defining routes)
 app.UseRouting();
 
-// ✅ API route to fetch the Google Maps API key
+// ✅ Serve static files from `wwwroot`
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = ""
+});
+
+// ✅ API Route: Fetch Google Maps API Key
 app.MapGet("/api/google-maps-key", () =>
 {
-    // Retrieve the API key from environment variables
     var apiKey = Environment.GetEnvironmentVariable("GOOGLE_MAPS_API_KEY");
 
     if (string.IsNullOrEmpty(apiKey))
@@ -36,15 +43,15 @@ app.MapGet("/api/google-maps-key", () =>
         return Results.Json(new { error = "API key not set" }, statusCode: 500);
     }
 
-    Console.WriteLine("🔑 Google Maps API Key successfully retrieved.");
+    Console.WriteLine($"🔑 API Key Retrieved: {apiKey.Substring(0, 5)}*****");
     return Results.Json(new { apiKey });
 });
 
-// ✅ Ensure `index.html` serves correctly
-app.MapFallbackToFile("index.html");
+// ✅ Catch-All Route: Ensures Frontend Routing Works (SPA Support)
+app.MapFallbackToFile("/index.html");
 
 // ✅ Run the application
-Console.WriteLine("✅ Application middleware configured. Running...");
+Console.WriteLine("✅ Application is running...");
 app.Run();
 
 

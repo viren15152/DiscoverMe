@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiscoverMe</title>
-    <link rel="stylesheet" href="css/site.css">  <!-- Using external CSS -->
+    <link rel="stylesheet" href="css/site.css">  
 </head>
 <body>
 
@@ -22,9 +22,7 @@
     <!-- Left Column: Favorites List -->
     <div class="favorites-container">
         <h3 class="favorites-title">Favorite Places</h3>
-        <ul id="favoriteList" class="favorite-list">
-            <!-- Favorite places will be dynamically added here -->
-        </ul>
+        <ul id="favoriteList" class="favorite-list"></ul>
     </div>
 
     <!-- Center Column: Map & Directions -->
@@ -35,13 +33,11 @@
 
     <!-- Right Column: Search & Directions Input -->
     <div class="search-directions-container">
-        <!-- Search Box -->
         <div class="search-container">
             <input type="text" id="searchBox" class="search-input" placeholder="Search for a place...">
             <button class="btn btn-search" onclick="searchLocation()">Search</button>
         </div>
 
-        <!-- Directions Input -->
         <div class="directions-container">
             <input type="text" id="startLocation" class="directions-input" placeholder="Enter Start Location">
             <input type="text" id="destination" class="directions-input" placeholder="Enter Destination">
@@ -50,9 +46,10 @@
     </div>
 </div>
 
-<script src="js/site.js"></script> <!-- Using external JS -->
+<script src="js/site.js"></script> 
 </body>
 </html>
+
 
 
 

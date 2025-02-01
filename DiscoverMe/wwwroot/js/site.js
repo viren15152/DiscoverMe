@@ -1,8 +1,7 @@
-﻿// Initialize Google Maps
-let map;
+﻿let map;
+let marker;
 let directionsService;
 let directionsRenderer;
-let marker;
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 async function loadGoogleMaps() {
@@ -29,7 +28,9 @@ async function loadGoogleMaps() {
         script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&libraries=places`;
         script.async = true;
         script.defer = true;
+        script.onload = () => console.log("✅ Google Maps script loaded.");
         script.onerror = () => console.error("❌ Failed to load Google Maps script!");
+
         document.head.appendChild(script);
     } catch (error) {
         console.error("⚠ Error loading Google Maps:", error);
@@ -40,19 +41,25 @@ async function loadGoogleMaps() {
 function initMap() {
     console.log("🗺 Initializing Google Maps...");
 
+    if (typeof google === "undefined") {
+        console.error("❌ Google Maps is not available!");
+        return;
+    }
+
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 37.7749, lng: -122.4194 },
         zoom: 12,
     });
 
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
     marker = new google.maps.Marker({
         map: map,
         draggable: true
     });
+
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+    directionsRenderer.setPanel(document.getElementById("directionsPanel"));
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -74,79 +81,75 @@ function initMap() {
     loadFavorites();
 }
 
-// Load the map when the window loads
-window.onload = loadGoogleMaps;
+function searchLocation() {
+    const searchBox = document.getElementById("searchBox").value;
+    if (!searchBox) return alert("Please enter a place!");
 
-// Fetch directions and display from the correct start point
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: searchBox }, (results, status) => {
+        if (status === "OK") {
+            const location = results[0].geometry.location;
+            map.setCenter(location);
+            marker.setPosition(location);
+            addFavorite(results[0].formatted_address, location);
+        } else {
+            alert("❌ Location not found!");
+        }
+    });
+}
+
+function addFavorite(name, location) {
+    const favorite = { name, lat: location.lat(), lng: location.lng() };
+    favorites.push(favorite);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    loadFavorites();
+}
+
+function loadFavorites() {
+    const list = document.getElementById("favoriteList");
+    list.innerHTML = "";
+    favorites.forEach((fav, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${fav.name}</span>
+            <button class="btn-remove" onclick="removeFavorite(${index})">Remove</button>`;
+        li.onclick = () => map.setCenter({ lat: fav.lat, lng: fav.lng });
+        list.appendChild(li);
+    });
+}
+
+function removeFavorite(index) {
+    favorites.splice(index, 1);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    loadFavorites();
+}
+
+// ✅ IMPLEMENT DIRECTIONS FUNCTIONALITY
 function getDirections() {
-    const origin = document.getElementById("origin").value;
+    const startLocation = document.getElementById("startLocation").value;
     const destination = document.getElementById("destination").value;
-    
-    if (!origin || !destination) {
-        alert("Please enter both origin and destination.");
+
+    if (!startLocation || !destination) {
+        alert("⚠ Please enter both start and destination locations!");
         return;
     }
-    
+
     const request = {
-        origin: origin,
+        origin: startLocation,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING,
-        provideRouteAlternatives: false,
     };
 
     directionsService.route(request, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(result);
-            loadDirections(result.routes[0].legs[0]);
+            console.log("✅ Directions found:", result);
         } else {
-            alert("Failed to load directions: " + status);
+            alert("❌ Unable to find directions. Check your input.");
+            console.error("❌ Directions API error:", status);
         }
     });
 }
 
-// Populate directions correctly in the UI
-function loadDirections(leg) {
-    const directionsPanel = document.getElementById("directionsPanel");
-    directionsPanel.innerHTML = "";
-    
-    // Ensure the first step (starting point) is included
-    const startDiv = document.createElement("div");
-    startDiv.innerHTML = `<strong>1.</strong> Depart from ${leg.start_address}`;
-    startDiv.style.padding = "10px";
-    startDiv.style.borderBottom = "1px solid #ccc";
-    directionsPanel.appendChild(startDiv);
-    
-    leg.steps.forEach((step, index) => {
-        const div = document.createElement("div");
-        div.innerHTML = `<strong>${index + 2}.</strong> ${step.instructions}`;
-        div.style.padding = "10px";
-        div.style.borderBottom = "1px solid #ccc";
-        directionsPanel.appendChild(div);
-    });
-    
-    // Ensure last step (destination arrival) is included
-    const endDiv = document.createElement("div");
-    endDiv.innerHTML = `<strong>${leg.steps.length + 2}.</strong> Arrive at ${leg.end_address}`;
-    endDiv.style.padding = "10px";
-    endDiv.style.borderBottom = "1px solid #ccc";
-    directionsPanel.appendChild(endDiv);
-    
-    // Ensure panel scrolls fully to show all directions
-    directionsPanel.style.maxHeight = "500px";
-    directionsPanel.style.overflowY = "auto";
-} 
-
-// Ensure buttons are spaced correctly
-document.addEventListener("DOMContentLoaded", function () {
-    const searchButton = document.getElementById("searchButton");
-    const directionsButton = document.getElementById("getDirectionsButton");
-    
-    searchButton.style.marginLeft = "10px";
-    directionsButton.style.marginLeft = "10px";
-});
-
-
-
-
-
+// Load the map when the window loads
+window.onload = loadGoogleMaps;
 
