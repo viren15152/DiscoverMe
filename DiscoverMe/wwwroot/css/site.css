@@ -15,7 +15,7 @@ body {
   color: white;
 }
 
-/* ✅ HEADER - Aligns Logo & Title Cleanly */
+/* HEADER - Aligns Logo & Title Cleanly */
 .header {
   display: flex;
   align-items: center;
@@ -25,31 +25,31 @@ body {
   padding-top: 30px;
 }
 
-/* ✅ LOGO - Properly Scaled & Spaced */
+/* LOGO - Properly Scaled & Spaced */
 .logo {
   width: 75px;
   height: 75px;
 }
 
-/* ✅ TITLE STYLING */
+/* TITLE STYLING */
 .header h1 {
   font-size: 40px;
-  color: white;
+  color: rgb(57, 135, 201);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   letter-spacing: 2px;
 }
 
-/* ✅ SUBTITLE - Clean & Readable */
+/* SUBTITLE - Clean & Readable */
 .header p {
   font-size: 14px;
-  color: #bbb;
+  color: rgb(57, 135, 201);
   font-weight: 500;
   margin-top: 5px;
   letter-spacing: 1px;
 }
 
-/* ✅ MAIN CONTENT CONTAINER */
+/* MAIN CONTENT CONTAINER */
 .main-content {
   display: flex;
   justify-content: center;
@@ -60,14 +60,14 @@ body {
   padding: 20px;
 }
 
-/* ✅ LEFT COLUMN: MAP & DIRECTIONS */
+/* LEFT COLUMN: MAP & DIRECTIONS */
 .map-directions-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* ✅ SEARCH & ROUTE INPUTS CONTAINER (NEXT TO MAP) */
+/* SEARCH & ROUTE INPUTS CONTAINER (NEXT TO MAP) */
 .search-directions-container {
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@ body {
   width: 320px;
 }
 
-/* ✅ SEARCH & ROUTE INPUT FIELDS */
+/* SEARCH & ROUTE INPUT FIELDS */
 .search-input,
 .directions-input {
   width: 100%;
@@ -89,17 +89,17 @@ body {
   transition: border 0.3s ease-in-out;
 }
 
-/* ✅ Input Focus Effect */
+/* Input Focus Effect */
 .search-input:focus,
 .directions-input:focus {
-  border-color: green;
+  border-color:  rgb(57, 135, 201);
   outline: none;
 }
 
-/* ✅ BUTTON STYLING - Next to Inputs */
+/* BUTTON STYLING - Next to Inputs */
 .btn-search,
 .btn-directions {
-  background-color: green;
+  background-color: rgb(57, 135, 201);
   color: white;
   padding: 12px 18px;
   border: none;
@@ -112,7 +112,7 @@ body {
 
 .btn-search:hover,
 .btn-directions:hover {
-  background-color: #007000;
+  background-color: rgb(14, 57, 93);
 }
 
 /* MAP & DIRECTIONS PANEL - SAME SIZE */
@@ -154,7 +154,7 @@ body {
   box-shadow: 0px 6px 12px rgba(0, 255, 0, 0.1);
 }
 
-/* ✅ FAVORITES TITLE */
+/* FAVORITES TITLE */
 .favorites-title {
   font-size: 20px;
   font-weight: bold;
@@ -165,14 +165,14 @@ body {
   text-align: center;
 }
 
-/* ✅ FAVORITE LIST */
+/* FAVORITE LIST */
 .favorite-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* ✅ FAVORITE ITEM DESIGN */
+/* FAVORITE ITEM DESIGN */
 .favorite-list li {
   background: #1e1e1e;
   padding: 14px;
@@ -185,7 +185,7 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-/* ✅ REMOVE BUTTON */
+/* REMOVE BUTTON */
 .btn-remove {
   background: rgb(194, 44, 74);
   color: white;
