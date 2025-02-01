@@ -44,7 +44,7 @@ body {
 /* SUBTITLE */
 .header p {
   font-size: 14px;
-  color: rgb(57, 135, 201);
+  color: whitesmoke;
   font-weight: 500;
   margin-top: 5px;
   letter-spacing: 1px;
@@ -181,7 +181,7 @@ body {
 
 /* REMOVE BUTTON */
 .btn-remove {
-  background: rgb(194, 44, 74);
+  background: rgb(57, 135, 201);
   color: white;
   border: none;
   cursor: pointer;
