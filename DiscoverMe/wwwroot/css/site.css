@@ -4,7 +4,7 @@
   }
 }
 
-/* ✅ GENERAL STYLING */
+/* GENERAL STYLING */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: black;
@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ✅ HEADER */
+/* HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* ✅ MAIN CONTENT CONTAINER */
+/* MAIN CONTENT CONTAINER */
 .main-content {
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ body {
   width: 100%;
 }
 
-/* ✅ SEARCH & DIRECTIONS SECTION */
+/* SEARCH & DIRECTIONS SECTION */
 .search-directions-container {
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@ body {
   width: 320px;
 }
 
-/* ✅ INPUT FIELDS - FIX TEXT ALIGNMENT */
+/* INPUT FIELDS - FIX TEXT ALIGNMENT */
 .search-input,
 .directions-input {
   width: 100%;
@@ -83,8 +83,8 @@ body {
   background: #222;
   color: white;
   transition: border 0.3s ease-in-out;
-  text-align: left; /* 🚀 Ensures text starts from the left */
-  line-height: 1.5; /* 🚀 Ensures proper text vertical alignment */
+  text-align: left; /* Ensures text starts from the left */
+  line-height: 1.5; /* Ensures proper text vertical alignment */
   box-sizing: border-box;
 }
 
@@ -139,7 +139,7 @@ body {
   flex-direction: column;
 }
 
-/* ✅ FAVORITES SECTION */
+/* FAVORITES SECTION */
 .favorites-container {
   width: 350px;
   background: rgba(255, 255, 255, 0.05);
@@ -197,7 +197,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ✅ RESPONSIVE FIXES (Switch Search & Favorites + Remove Left Gap) */
+/* RESPONSIVE FIXES (Switch Search & Favorites + Remove Left Gap) */
 @media screen and (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -207,20 +207,20 @@ body {
     padding: 0;
   }
 
-  /* ✅ Move SEARCH to the top */
+  /* Move SEARCH to the top */
   .search-directions-container {
     order: -1;
     width: 100%;
     max-width: 400px;
   }
 
-  /* ✅ Move FAVORITES to the bottom */
+  /* Move FAVORITES to the bottom */
   .favorites-container {
     order: 1;
     width: 100%;
   }
 
-  /* ✅ REMOVE LEFT GAP & ENSURE FULL-WIDTH MAP & DIRECTIONS */
+  /* REMOVE LEFT GAP & ENSURE FULL-WIDTH MAP & DIRECTIONS */
   #map,
   #directionsPanel {
     height: 450px;

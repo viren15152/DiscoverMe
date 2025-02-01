@@ -53,6 +53,8 @@ app.MapFallbackToFile("/index.html");
 // ✅ Run the application
 Console.WriteLine("✅ Application is running...");
 app.Run();
+Env.Load();
+Console.WriteLine($"Google Maps API Key Loaded: {Environment.GetEnvironmentVariable("GOOGLE_MAPS_API_KEY")}");
 
 
 
