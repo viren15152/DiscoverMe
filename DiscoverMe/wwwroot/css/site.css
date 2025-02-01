@@ -1,158 +1,191 @@
-/* IMPORT FONT */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* IMPORT FONTS */
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
 
 /* GENERAL STYLING */
 body {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: black;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
-/* HEADINGS */
-h1 {
-  color: whitesmoke;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-align: center;
-}
-
-h3 {
-  color: grey;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-}
-
-p {
-  color: whitesmoke;
-  text-align: center;
-}
-
-/* MAP */
-#map {
-  height: 500px;
-  width: 600px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-/* MAP CONTAINER */
-.map-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* HEADER */
+/* ✅ HEADER - Aligns Logo & Title Cleanly */
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-top: 30px;
 }
 
+/* ✅ LOGO - Properly Scaled & Spaced */
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 
-/* SEARCH & DIRECTIONS CONTAINER */
-.search-container, .directions-container {
+/* ✅ TITLE STYLING */
+.header h1 {
+  font-size: 40px;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+/* ✅ SUBTITLE - Clean & Readable */
+.header p {
+  font-size: 14px;
+  color: #bbb;
+  font-weight: 500;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+/* ✅ MAIN CONTENT CONTAINER */
+.main-content {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
-.search-input {
-  width: 300px;
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
+/* ✅ LEFT COLUMN: MAP & DIRECTIONS */
+.map-directions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* BUTTON STYLES */
-.btn-search {
-  background-color: green;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+/* ✅ SEARCH & ROUTE INPUTS CONTAINER (NEXT TO MAP) */
+.search-directions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  width: 320px;
+}
+
+/* ✅ SEARCH & ROUTE INPUT FIELDS */
+.search-input,
+.directions-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #444;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
+  background: #222;
+  color: white;
+  transition: border 0.3s ease-in-out;
 }
 
-.btn-search:hover {
-  background-color: darkgreen;
+/* ✅ Input Focus Effect */
+.search-input:focus,
+.directions-input:focus {
+  border-color: green;
+  outline: none;
 }
 
+/* ✅ BUTTON STYLING - Next to Inputs */
+.btn-search,
 .btn-directions {
   background-color: green;
   color: white;
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
+.btn-search:hover,
 .btn-directions:hover {
-  background-color: darkgreen;
+  background-color: #007000;
 }
 
-/* DIRECTIONS PANEL */
+/* MAP & DIRECTIONS PANEL - SAME SIZE */
+#map,
 #directionsPanel {
-  background-color: white;
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background: white;
   padding: 15px;
+  box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;  /* Allow scrolling within the directions box */
+  flex-direction: column;  /* Ensure the content aligns vertically */
+}
+
+/* ADD SCROLLBAR STYLE FOR DIRECTIONS PANEL */
+#directionsPanel::-webkit-scrollbar {
+  width: 10px;
+}
+
+#directionsPanel::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 128, 0, 0.7);
   border-radius: 10px;
-  width: 600px;
-  margin: auto;
-  max-height: 300px;
-  overflow-y: auto;
-  text-align: left;
 }
 
-/* FAVORITES SECTION */
+#directionsPanel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ✅ FAVORITES SECTION */
+.favorites-container {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 255, 0, 0.1);
+}
+
+/* ✅ FAVORITES TITLE */
 .favorites-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
   text-align: center;
-  margin-top: 20px;
-  color: whitesmoke;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* FAVORITE LIST */
+/* ✅ FAVORITE LIST */
 .favorite-list {
   list-style: none;
   padding: 0;
-  text-align: center;
-  margin-top: 15px;
+  margin: 0;
 }
 
+/* ✅ FAVORITE ITEM DESIGN */
 .favorite-list li {
-  background: #f8f9fa;
-  padding: 12px;
-  margin: 8px auto;
-  border-radius: 5px;
+  background: #1e1e1e;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 450px;
-  border: 2px solid #ccc;
+  border: 2px solid #444;
+  transition: all 0.3s ease-in-out;
 }
 
-.favorite-list span {
-  flex-grow: 1;
-  text-align: left;
-  padding-left: 10px;
-}
-
-/* REMOVE BUTTON */
+/* ✅ REMOVE BUTTON */
 .btn-remove {
   background: rgb(194, 44, 74);
   color: white;
@@ -160,40 +193,31 @@ p {
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
 .btn-remove:hover {
-  background: green;
+  background: darkred;
+  transform: scale(1.05);
 }
 
-/* ✅ Flexbox to position map and directions side by side */
-.map-directions-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px; /* Adds spacing between map & directions */
-  max-width: 900px; /* Ensures both fit in a reasonable space */
-  margin: auto; /* Centers the container */
-}
 
-/* ✅ Ensure the map and directions panel have the same size */
-#map, #directionsPanel {
-  width: 450px;  /* Adjust to match your current map width */
-  height: 500px; /* Keep height equal */
-  border-radius: 10px;
-  background: white; /* Matches the map's default look */
-  overflow-y: auto; /* Enables scrolling for long route lists */
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-}
 
-/* ✅ Style the directions panel */
-#directionsPanel {
-  border: 2px solid #ccc;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -10,40 +10,50 @@
 
 <!-- Header Section -->
 <div class="header">
-    <img src="images/globe.png" alt="Logo" class="logo"> <!-- Logo next to text -->
-    <h1 class="title">DiscoverMe</h1>
-    <p>Find and save your favorite places easily</p>
+    <img src="images/globe.png" alt="Logo" class="logo">
+    <div>
+        <h1>DiscoverMe</h1>
+        <p>FIND YOUR FAVORITE PLACES, PLAN ROUTES, AND EXPLORE THE WORLD YOUR WAY</p>
+    </div>
 </div>
 
-<!-- Search Box -->
-<div class="search-container">
-    <input type="text" id="searchBox" class="form-control search-input" placeholder="Search for a place...">
-    <button class="btn btn-search" onclick="searchLocation()">Search</button>
+<!-- Main Layout -->
+<div class="main-content">
+    <!-- Left Column: Favorites List -->
+    <div class="favorites-container">
+        <h3 class="favorites-title">Favorite Places</h3>
+        <ul id="favoriteList" class="favorite-list">
+            <!-- Favorite places will be dynamically added here -->
+        </ul>
+    </div>
+
+    <!-- Center Column: Map & Directions -->
+    <div class="map-directions-container">
+        <div id="map"></div>
+        <div id="directionsPanel"></div>
+    </div>
+
+    <!-- Right Column: Search & Directions Input -->
+    <div class="search-directions-container">
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="searchBox" class="search-input" placeholder="Search for a place...">
+            <button class="btn btn-search" onclick="searchLocation()">Search</button>
+        </div>
+
+        <!-- Directions Input -->
+        <div class="directions-container">
+            <input type="text" id="startLocation" class="directions-input" placeholder="Enter Start Location">
+            <input type="text" id="destination" class="directions-input" placeholder="Enter Destination">
+            <button class="btn btn-directions" onclick="getDirections()">Get Directions</button>
+        </div>
+    </div>
 </div>
-
-
-<!-- Directions Input -->
-<div class="directions-container">
-    <input type="text" id="startLocation" class="form-control search-input" placeholder="Enter Start Location">
-    <input type="text" id="destination" class="form-control search-input" placeholder="Enter Destination">
-    <button class="btn btn-directions" onclick="getDirections()">Get Directions</button>
-</div>
-
-<!-- Map & Directions Panel -->
-<!-- Map & Directions Container -->
-<div class="map-directions-container">
-    <div id="map"></div>
-    <div id="directionsPanel"></div> <!--Moved next to the map -->
-</div>
-
-
-<!-- Favorites Section -->
-<h3 class="favorites-title">Favorite Places</h3>
-<ul id="favoriteList" class="favorite-list"></ul>
 
 <script src="js/site.js"></script> <!-- Using external JS -->
 </body>
 </html>
+
 
 
 
