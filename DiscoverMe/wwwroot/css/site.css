@@ -6,8 +6,9 @@
 
 /* GENERAL STYLING */
 body {
+  background: url('/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
   font-family: 'Poppins', sans-serif;
-  background-color: black;
   margin: 0;
   padding: 0;
   color: white;
@@ -35,7 +36,7 @@ body {
 /* TITLE */
 .header h1 {
   font-size: 40px;
-  color: rgb(57, 135, 201);
+  color: black;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   letter-spacing: 2px;
@@ -44,7 +45,7 @@ body {
 /* SUBTITLE */
 .header p {
   font-size: 14px;
-  color: whitesmoke;
+  color: black;
   font-weight: 500;
   margin-top: 5px;
   letter-spacing: 1px;
@@ -88,7 +89,7 @@ body {
   box-sizing: border-box;
 }
 
-/* ✅ BUTTONS - MATCH INPUT SIZE */
+/* BUTTONS - MATCH INPUT SIZE */
 .btn-search,
 .btn-directions {
   width: 100%;
@@ -111,7 +112,7 @@ body {
   background-color: rgb(14, 57, 93);
 }
 
-/* ✅ MAP & DIRECTIONS PANEL - FULL WIDTH ON MOBILE */
+/* MAP & DIRECTIONS PANEL - FULL WIDTH ON MOBILE */
 .map-directions-container {
   display: flex;
   flex-direction: column;
@@ -121,7 +122,7 @@ body {
   max-width: 650px;
 }
 
-/* ✅ ENSURE MAP & DIRECTIONS TOUCH THE LEFT SIDE ON MOBILE */
+/* ENSURE MAP & DIRECTIONS TOUCH THE LEFT SIDE ON MOBILE */
 #map,
 #directionsPanel {
   width: 100%;
@@ -152,7 +153,7 @@ body {
 .favorites-title {
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: black;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -231,6 +232,8 @@ body {
     padding: 0;
   }
 }
+
+
 
 
 
