@@ -20,19 +20,22 @@ catch (Exception ex)
     Console.WriteLine($"❌ Error loading .env file: {ex.Message}");
 }
 
+// ✅ Ensure the app listens on port 8080 (Required for Render)
+builder.WebHost.UseUrls("http://0.0.0.0:8080");
+
 var app = builder.Build();
 
-// Enable Routing Middleware (MUST be before defining routes)
+// ✅ Enable Routing Middleware (MUST be before defining routes)
 app.UseRouting();
 
-// Serve static files from `wwwroot`
+// ✅ Serve static files from `wwwroot`
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
     RequestPath = ""
 });
 
-// API Route: Fetch Google Maps API Key
+// ✅ API Route: Fetch Google Maps API Key
 app.MapGet("/api/google-maps-key", () =>
 {
     var apiKey = Environment.GetEnvironmentVariable("GOOGLE_MAPS_API_KEY");
@@ -47,14 +50,13 @@ app.MapGet("/api/google-maps-key", () =>
     return Results.Json(new { apiKey });
 });
 
-// Catch-All Route: Ensures Frontend Routing Works (SPA Support)
+// ✅ Catch-All Route: Ensures Frontend Routing Works (SPA Support)
 app.MapFallbackToFile("/index.html");
 
-// Run the application
+// ✅ Run the application
 Console.WriteLine("✅ Application is running...");
 app.Run();
-Env.Load();
-Console.WriteLine($"Google Maps API Key Loaded: {Environment.GetEnvironmentVariable("GOOGLE_MAPS_API_KEY")}");
+
 
 
 
