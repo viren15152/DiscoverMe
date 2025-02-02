@@ -58,8 +58,8 @@ function initMap() {
 
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer({
-        preserveViewport: false, // ✅ Ensures full route is visible
-        suppressMarkers: false  // ✅ Keeps markers visible
+        preserveViewport: false, // Ensures full route is visible
+        suppressMarkers: false  // Keeps markers visible
     });
 
     directionsRenderer.setMap(map);
@@ -141,7 +141,7 @@ function getDirections() {
         origin: startLocation,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING,
-        provideRouteAlternatives: true, // ✅ Allows multiple routes if available
+        provideRouteAlternatives: true, // Allows multiple routes if available
         unitSystem: google.maps.UnitSystem.METRIC,
     };
 
@@ -157,7 +157,7 @@ function getDirections() {
                 });
             });
 
-            // ✅ Call loadDirections() to update UI
+            // Call loadDirections() to update UI
             loadDirections(steps);
 
             console.log("✅ Directions found:", result);
@@ -168,14 +168,14 @@ function getDirections() {
     });
 }
 
-// ✅ FIX: Ensure directions panel starts from Step 1 and is properly formatted
+// FIX: Ensure directions panel starts from Step 1 and is properly formatted
 function loadDirections(directions) {
     const directionsPanel = document.getElementById("directionsPanel");
 
-    // ✅ Reset panel content before adding new directions
+    // Reset panel content before adding new directions
     directionsPanel.innerHTML = "";
 
-    // ✅ Add all directions steps from the beginning
+    // Add all directions steps from the beginning
     directions.forEach((step, index) => {
         const div = document.createElement("div");
         div.innerHTML = `<strong>${index + 1}.</strong> ${step}`;
