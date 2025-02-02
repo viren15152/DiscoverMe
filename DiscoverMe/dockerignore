@@ -1,7 +1,0 @@
-bin/
-obj/
-*.md
-.git
-.env
-node_modules/
-wwwroot/images/
