@@ -127,7 +127,7 @@ function removeFavorite(index) {
     loadFavorites();
 }
 
-// ✅ FIX: Ensure ALL STEPS from the start of the route are displayed
+// Ensure ALL STEPS from the start of the route are displayed
 function getDirections() {
     const startLocation = document.getElementById("startLocation").value;
     const destination = document.getElementById("destination").value;
@@ -168,7 +168,6 @@ function getDirections() {
     });
 }
 
-// FIX: Ensure directions panel starts from Step 1 and is properly formatted
 function loadDirections(directions) {
     const directionsPanel = document.getElementById("directionsPanel");
 
@@ -182,7 +181,7 @@ function loadDirections(directions) {
         directionsPanel.appendChild(div);
     });
 
-    // 🚀 Scroll to the top to ensure all steps are visible
+    // Scroll to the top to ensure all steps are visible
     directionsPanel.scrollTop = 0;
 }
 

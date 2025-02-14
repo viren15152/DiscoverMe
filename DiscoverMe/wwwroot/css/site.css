@@ -1,10 +1,46 @@
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.265);  
+  color: white;
+  padding: 15px 0;  
+  text-align: center;  
+  position: relative; 
 }
 
-/* GENERAL STYLING */
+.navbar-container {
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 70px;  
+  background-image: linear-gradient(to right, #7de6e5, #00a3e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;  
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+}
+
+.navbar p {
+  font-size: 14px;  
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  background-image: linear-gradient(to right, #7de6e5, #00a3e0);  
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body {
+  padding-top: 80px;  
+}
+
 body {
   background: url('/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -36,7 +72,10 @@ body {
 /* TITLE */
 .header h1 {
   font-size: 70px;
-  color: black;
+  background-image: linear-gradient(to right, #7de6e5, #00a3e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   letter-spacing: 2px;
@@ -45,7 +84,7 @@ body {
 /* SUBTITLE */
 .header p {
   font-size: 14px;
-  color: black;
+  color: linear-gradient(to right, #7de6e5, #00a3e0);
   font-weight: 500;
   margin-top: 5px;
   letter-spacing: 1px;
@@ -72,7 +111,7 @@ body {
   width: 320px;
 }
 
-/* INPUT FIELDS - FIX TEXT ALIGNMENT */
+/* INPUT FIELDS */
 .search-input,
 .directions-input {
   width: 100%;
@@ -84,12 +123,12 @@ body {
   background: #222;
   color: white;
   transition: border 0.3s ease-in-out;
-  text-align: left; /* Ensures text starts from the left */
-  line-height: 1.5; /* Ensures proper text vertical alignment */
+  text-align: left;
+  line-height: 1.5;
   box-sizing: border-box;
 }
 
-/* BUTTONS - MATCH INPUT SIZE */
+/* BUTTONS */
 .btn-search,
 .btn-directions {
   width: 100%;
@@ -109,10 +148,10 @@ body {
 
 .btn-search:hover,
 .btn-directions:hover {
-  background-color: rgb(14, 57, 93);
+  background-color: green;
 }
 
-/* MAP & DIRECTIONS PANEL - FULL WIDTH ON MOBILE */
+/* MAP & DIRECTIONS */
 .map-directions-container {
   display: flex;
   flex-direction: column;
@@ -122,7 +161,6 @@ body {
   max-width: 650px;
 }
 
-/* ENSURE MAP & DIRECTIONS TOUCH THE LEFT SIDE ON MOBILE */
 #map,
 #directionsPanel {
   width: 100%;
@@ -149,17 +187,6 @@ body {
   box-shadow: 0px 6px 12px rgba(0, 255, 0, 0.1);
 }
 
-/* FAVORITES TITLE */
-.favorites-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
 /* FAVORITE LIST */
 .favorite-list {
   list-style: none;
@@ -167,7 +194,6 @@ body {
   margin: 0;
 }
 
-/* FAVORITE ITEM DESIGN */
 .favorite-list li {
   background: #1e1e1e;
   padding: 14px;
@@ -198,7 +224,7 @@ body {
   transform: scale(1.05);
 }
 
-/* RESPONSIVE FIXES (Switch Search & Favorites + Remove Left Gap) */
+/* RESPONSIVE STYLES */
 @media screen and (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -208,20 +234,17 @@ body {
     padding: 0;
   }
 
-  /* Move SEARCH to the top */
   .search-directions-container {
     order: -1;
     width: 100%;
     max-width: 400px;
   }
 
-  /* Move FAVORITES to the bottom */
   .favorites-container {
     order: 1;
     width: 100%;
   }
 
-  /* REMOVE LEFT GAP & ENSURE FULL-WIDTH MAP & DIRECTIONS */
   #map,
   #directionsPanel {
     height: 450px;
@@ -232,6 +255,8 @@ body {
     padding: 0;
   }
 }
+
+
 
 
 
