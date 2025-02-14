@@ -1,7 +1,7 @@
 /* NAVBAR */
 .navbar {
   width: 100%;
-  background-color: rgba(128, 128, 128, 0.265);  
+  background-color: rgba(128, 128, 128, 0.265) !important;  
   color: white;
   padding: 15px 0;  
   text-align: center;  
