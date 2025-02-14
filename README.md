@@ -1,7 +1,6 @@
 # DiscoverMe
 
-![alt text](<DiscoverMe/wwwroot/images/Screenshot 2025-02-02 at 13.26.08.png>)
-![alt text](<DiscoverMe/wwwroot/images/Screenshot 2025-02-02 at 13.24.59.png>)
+![alt text](<DiscoverMe/wwwroot/images/Screenshot 2025-02-14 at 22.49.51.png>)
 ![alt text](<DiscoverMe/wwwroot/images/Screenshot 2025-02-02 at 13.27.03.png>)
 
 
