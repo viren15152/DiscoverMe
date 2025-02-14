@@ -21,6 +21,7 @@ catch (Exception ex)
 }
 
 // Ensures the app listens on port 8080 (Required for Render)
+//builder.WebHost.UseUrls("http://localhost:5079");
 builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
 var app = builder.Build();

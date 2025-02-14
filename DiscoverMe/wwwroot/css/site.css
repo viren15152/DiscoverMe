@@ -1,47 +1,44 @@
 /* NAVBAR */
 .navbar {
   width: 100%;
-  background-color: rgba(128, 128, 128, 0.265) !important;  
+  background-color: rgba(128, 128, 128, 0.265);
   color: white;
-  padding: 15px 0;  
-  text-align: center;  
-  position: relative; 
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
 }
 
 .navbar-container {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .navbar h1 {
   margin: 0;
-  font-size: 70px;  
+  font-size: 70px;
   background-image: linear-gradient(to right, #7de6e5, #00a3e0);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;  
+  color: transparent;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   letter-spacing: 2px;
 }
 
 .navbar p {
-  font-size: 14px;  
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
   margin-top: 5px;
-  background-image: linear-gradient(to right, #7de6e5, #00a3e0);  
+  background-image: linear-gradient(to right, #7de6e5, #00a3e0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 body {
-  padding-top: 80px;  
-}
-
-body {
+  padding-top: 80px;
   background: url('/images/background.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Poppins', sans-serif;
@@ -67,27 +64,6 @@ body {
 .logo {
   width: 75px;
   height: 75px;
-}
-
-/* TITLE */
-.header h1 {
-  font-size: 70px;
-  background-image: linear-gradient(to right, #7de6e5, #00a3e0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin: 0;
-  letter-spacing: 2px;
-}
-
-/* SUBTITLE */
-.header p {
-  font-size: 14px;
-  color: linear-gradient(to right, #7de6e5, #00a3e0);
-  font-weight: 500;
-  margin-top: 5px;
-  letter-spacing: 1px;
 }
 
 /* MAIN CONTENT CONTAINER */
@@ -255,6 +231,7 @@ body {
     padding: 0;
   }
 }
+
 
 
 
